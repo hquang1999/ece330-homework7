@@ -15,7 +15,7 @@ void states::reset() {
 	c1.clear();
 }
 
-void states::setState(string nxt) {
+void states::setState(string &nxt) {
 	state = nxt;
 }
 
@@ -104,9 +104,15 @@ void states::update(int newI, string &ste) {
 				setState("11");
 			}
 			break;
-		
 	}
 }
 void states::print() {
-
+	findPaths();
+	cout << "Bit String | c0 | c1" << endl;
+	for (int i = 0; i < original.size(); i++) {
+		cout << setw(10) << orginal.at(i) 
+			<< " | " << c0.at(i) << " | " 
+			<< c1.at(i) << endl;
+	} 
+	
 }

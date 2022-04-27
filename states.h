@@ -23,7 +23,7 @@ class states {
 		
 		void reset();
 
-		void setState(string);
+		void setState(string &);
 		string getState() const;
 /*
 		void setI(int);
