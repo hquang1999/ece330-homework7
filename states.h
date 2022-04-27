@@ -6,26 +6,29 @@ using namespace std;
 
 class states {
 	private:
-		vector<int> state;
-		int I;
+		// These are the initial states. They should not be touched
+		string firstState;
+		// These are the current states. They can have setters and getters
+		string state;
+		//int I;
+		// User inputted bit string
 		vector<int> original;
-
+		
 		vector<int> out;
 		vector<int> c0;
 		vector<int> c1;
 
 	public:
-		states(initializer_list<int> &ls);
+		states(const initializer_list<int> &ls, string &st);
 		
 		void reset();
 
-		void setState(vector<int>);
-		vector<int> getState() const;
-
+		void setState(string);
+		string getState() const;
+/*
 		void setI(int);
 		int getI() const;
-
-		//void setOrg(int[]);
+*/
 		vector<int> getOrg() const;
 
 		vector<int> getBitStr() const;
@@ -34,5 +37,6 @@ class states {
 		vector<int> getC1() const;
 
 		void findPaths();
+		void update(int, string &) {
 		void print();
 };

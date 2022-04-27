@@ -1,27 +1,28 @@
 #include "states.h"
 
-states::states(initializer_list<int> &ls) {
-	copy(original.begin(),original.end(),ls.begin()),
+states::states(const initializer_list<int> &ls, string &st) {
+	copy(ls.begin(),ls.end(),original.begin());
+	
+	firstState = st;
 	reset();
 }
 
 void states::reset() {
-	vector<int> temp = {0,0};
-	setState(temp);
-	setI(0);
+	setState(firstState);
+//	setI(0);
 	out.clear();
 	c0.clear();
 	c1.clear();
 }
 
-void states::setState(vector<int> nxt) {
+void states::setState(string nxt) {
 	state = nxt;
 }
 
-vector<int> states::getState() const {
+string states::getState() const {
 	return state;
 }
-
+/*
 void states::setI(int i) {
 	I = i;
 }
@@ -29,15 +30,7 @@ void states::setI(int i) {
 int states::getI() const {
 	return I;
 }
-/*
-void states::setOrg(int arr[]) {
-	int max = sizeof(arr)/sizeof(arr[0]);
-	for (int i = 0; i < max; i++) {
-		original.push_back(arr[i]);
-	}	
-}
 */
-
 vector<int> states::getOrg() const {
 	return original;
 }
@@ -56,6 +49,63 @@ vector<int> states::getC1() const {
 
 void states::findPaths() {
 	reset();
+	for (int i = 0; i < orginal.size(); i++) {
+		update(original.at(i),state);	
+	}
+}
+
+void states::update(int newI, string &ste) {
+	switch(ste) {
+		case "00": 
+			if (newI == 0) {
+				c0.push_back(0);
+				c1.push_back(0);
+				setState("00");
+			} 
+			else {
+				c0.push_back(1);
+				c1.Push_back(1);
+				setState("10");
+			}
+			break;
+		case "01":
+			if (newI == 0) {
+				c0.push_back(1);
+				c1.push_back(1);
+				setState("00");
+			} 
+			else {
+				c0.push_back(0);
+				c1.Push_back(0);
+				setState("10");
+			}
+			break;
+		case "10":
+			if (newI == 0) {
+				c0.push_back(0);
+				c1.push_back(1);
+				setState("01");
+			} 
+			else {
+				c0.push_back(1);
+				c1.Push_back(0);
+				setState("11");
+			}
+			break;
+		case "11":
+			if (newI == 0) {
+				c0.push_back(1);
+				c1.push_back(0);
+				setState("01");
+			} 
+			else {
+				c0.push_back(0);
+				c1.Push_back(1);
+				setState("11");
+			}
+			break;
+		
+	}
 }
 void states::print() {
 
