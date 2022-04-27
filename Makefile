@@ -1,4 +1,4 @@
-go: main.o states.cpp
+go: main.o states.o
 	g++ -o go main.o states.o
 
 main.o: main.cpp
