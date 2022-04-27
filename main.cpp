@@ -2,8 +2,10 @@
 
 using namespace std;
 int main () {
-	vector<int> ex = {1,0,0,0,1,1,1,0,1};
-	states x(ex,"00");
+	states x({1,0,0,0,1,1,1,0,1},"00");
 	x.print();
+	
+	states y({1,0,1,0,1,0,1,0,1,0,1,1,1,0,0},"00");
+	y.print();
 	return 0;
 }

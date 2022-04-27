@@ -1,7 +1,6 @@
 #include "states.h"
 
 states::states(vector<int> ls, string st) {
-	//copy(ls.begin(),ls.end(),original.begin());
 	original = ls;
 	firstState = st;
 	reset();
@@ -94,15 +93,15 @@ void states::update(int newI, string ste) {
 			setState("11");
 		}
 	}
-
 }
+
 void states::print() {
 	findPaths();
-	cout << "Bit String | c0 | c1" << endl;
+	cout << "Bit String | c_0 | c_1" << endl;
 	for (int i = 0; i < original.size(); i++) {
-		cout << setw(10) << original.at(i) 
-			<< " | " << c0.at(i) << "  | " 
+	cout << "     " << original.at(i) << "    "
+			<< " |  " << c0.at(i) << "  |  " 
 			<< c1.at(i) << endl;
 	} 
-	
+	cout << endl;	
 }

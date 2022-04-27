@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <initializer_list>
-#include <iomanip>
 
 using namespace std;
 
@@ -19,7 +18,7 @@ class states {
 		vector<int> c1;
 
 	public:
-		states(vector<int>, string);
+		states(vector<int> ls, string);
 		
 		void reset();
 
