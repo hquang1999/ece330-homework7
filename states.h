@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <initializer_list>
+#include <iomanip>
 
 using namespace std;
 
@@ -19,11 +20,11 @@ class states {
 		vector<int> c1;
 
 	public:
-		states(const initializer_list<int> &ls, string &st);
+		states(initializer_list<int>, string &);
 		
 		void reset();
 
-		void setState(string &);
+		void setState(string);
 		string getState() const;
 /*
 		void setI(int);
@@ -37,6 +38,6 @@ class states {
 		vector<int> getC1() const;
 
 		void findPaths();
-		void update(int, string &) {
+		void update(int, string &);
 		void print();
 };

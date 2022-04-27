@@ -1,6 +1,6 @@
 #include "states.h"
 
-states::states(const initializer_list<int> &ls, string &st) {
+states::states(initializer_list<int> ls, string &st) {
 	copy(ls.begin(),ls.end(),original.begin());
 	
 	firstState = st;
@@ -15,7 +15,7 @@ void states::reset() {
 	c1.clear();
 }
 
-void states::setState(string &nxt) {
+void states::setState(string nxt) {
 	state = nxt;
 }
 
@@ -49,12 +49,61 @@ vector<int> states::getC1() const {
 
 void states::findPaths() {
 	reset();
-	for (int i = 0; i < orginal.size(); i++) {
+	for (int i = 0; i < original.size(); i++) {
 		update(original.at(i),state);	
 	}
 }
 
 void states::update(int newI, string &ste) {
+	if (ste == "00") {
+		if (newI == 0) {
+			c0.push_back(0);
+			c1.push_back(0);
+			setState("00");
+		} 
+		else {
+			c0.push_back(1);
+			c1.push_back(1);
+			setState("10");
+		}
+	}
+	else if (ste == "01") {
+		if (newI == 0) {
+			c0.push_back(1);
+			c1.push_back(1);
+			setState("00");
+		} 
+		else {
+			c0.push_back(0);
+			c1.push_back(0);
+			setState("10");
+		}
+	}
+	else if (ste == "10") {
+		if (newI == 0) {
+			c0.push_back(0);
+			c1.push_back(1);
+			setState("01");
+		} 
+		else {
+			c0.push_back(1);
+			c1.push_back(0);
+			setState("11");
+		}
+	}
+	else {
+		if (newI == 0) {
+			c0.push_back(1);
+			c1.push_back(0);
+			setState("01");
+		} 
+		else {
+			c0.push_back(0);
+			c1.push_back(1);
+			setState("11");
+		}
+	}
+	/*
 	switch(ste) {
 		case "00": 
 			if (newI == 0) {
@@ -64,7 +113,7 @@ void states::update(int newI, string &ste) {
 			} 
 			else {
 				c0.push_back(1);
-				c1.Push_back(1);
+				c1.push_back(1);
 				setState("10");
 			}
 			break;
@@ -76,7 +125,7 @@ void states::update(int newI, string &ste) {
 			} 
 			else {
 				c0.push_back(0);
-				c1.Push_back(0);
+				c1.push_back(0);
 				setState("10");
 			}
 			break;
@@ -88,7 +137,7 @@ void states::update(int newI, string &ste) {
 			} 
 			else {
 				c0.push_back(1);
-				c1.Push_back(0);
+				c1.push_back(0);
 				setState("11");
 			}
 			break;
@@ -100,17 +149,18 @@ void states::update(int newI, string &ste) {
 			} 
 			else {
 				c0.push_back(0);
-				c1.Push_back(1);
+				c1.push_back(1);
 				setState("11");
 			}
 			break;
 	}
+	*/
 }
 void states::print() {
 	findPaths();
 	cout << "Bit String | c0 | c1" << endl;
 	for (int i = 0; i < original.size(); i++) {
-		cout << setw(10) << orginal.at(i) 
+		cout << setw(10) << original.at(i) 
 			<< " | " << c0.at(i) << " | " 
 			<< c1.at(i) << endl;
 	} 
