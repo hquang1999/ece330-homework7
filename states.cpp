@@ -1,15 +1,14 @@
 #include "states.h"
 
-states::states(initializer_list<int> ls, string st) {
-	copy(ls.begin(),ls.end(),original.begin());
-	
+states::states(vector<int> ls, string st) {
+	//copy(ls.begin(),ls.end(),original.begin());
+	original = ls;
 	firstState = st;
 	reset();
 }
 
 void states::reset() {
 	setState(firstState);
-//	setI(0);
 	out.clear();
 	c0.clear();
 	c1.clear();
@@ -22,15 +21,7 @@ void states::setState(string nxt) {
 string states::getState() const {
 	return state;
 }
-/*
-void states::setI(int i) {
-	I = i;
-}
 
-int states::getI() const {
-	return I;
-}
-*/
 vector<int> states::getOrg() const {
 	return original;
 }
@@ -103,65 +94,14 @@ void states::update(int newI, string ste) {
 			setState("11");
 		}
 	}
-	/*
-	switch(ste) {
-		case "00": 
-			if (newI == 0) {
-				c0.push_back(0);
-				c1.push_back(0);
-				setState("00");
-			} 
-			else {
-				c0.push_back(1);
-				c1.push_back(1);
-				setState("10");
-			}
-			break;
-		case "01":
-			if (newI == 0) {
-				c0.push_back(1);
-				c1.push_back(1);
-				setState("00");
-			} 
-			else {
-				c0.push_back(0);
-				c1.push_back(0);
-				setState("10");
-			}
-			break;
-		case "10":
-			if (newI == 0) {
-				c0.push_back(0);
-				c1.push_back(1);
-				setState("01");
-			} 
-			else {
-				c0.push_back(1);
-				c1.push_back(0);
-				setState("11");
-			}
-			break;
-		case "11":
-			if (newI == 0) {
-				c0.push_back(1);
-				c1.push_back(0);
-				setState("01");
-			} 
-			else {
-				c0.push_back(0);
-				c1.push_back(1);
-				setState("11");
-			}
-			break;
-	}
-	*/
+
 }
 void states::print() {
 	findPaths();
 	cout << "Bit String | c0 | c1" << endl;
 	for (int i = 0; i < original.size(); i++) {
 		cout << setw(10) << original.at(i) 
-			<< " | " << c0.at(i) << " | " 
+			<< " | " << c0.at(i) << "  | " 
 			<< c1.at(i) << endl;
 	} 
 	

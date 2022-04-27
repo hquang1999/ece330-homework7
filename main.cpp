@@ -2,7 +2,8 @@
 
 using namespace std;
 int main () {
-	states x({1,0,0,0,1,1,1,0,1},"00");
-	//x.print();
+	vector<int> ex = {1,0,0,0,1,1,1,0,1};
+	states x(ex,"00");
+	x.print();
 	return 0;
 }

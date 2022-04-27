@@ -11,7 +11,6 @@ class states {
 		string firstState;
 		// These are the current states. They can have setters and getters
 		string state;
-		//int I;
 		// User inputted bit string
 		vector<int> original;
 		
@@ -20,16 +19,13 @@ class states {
 		vector<int> c1;
 
 	public:
-		states(initializer_list<int>, string);
+		states(vector<int>, string);
 		
 		void reset();
 
 		void setState(string);
 		string getState() const;
-/*
-		void setI(int);
-		int getI() const;
-*/
+
 		vector<int> getOrg() const;
 
 		vector<int> getBitStr() const;
