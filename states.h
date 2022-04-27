@@ -20,7 +20,7 @@ class states {
 		vector<int> c1;
 
 	public:
-		states(initializer_list<int>, string &);
+		states(initializer_list<int>, string);
 		
 		void reset();
 
@@ -38,6 +38,6 @@ class states {
 		vector<int> getC1() const;
 
 		void findPaths();
-		void update(int, string &);
+		void update(int, string);
 		void print();
 };

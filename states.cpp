@@ -1,6 +1,6 @@
 #include "states.h"
 
-states::states(initializer_list<int> ls, string &st) {
+states::states(initializer_list<int> ls, string st) {
 	copy(ls.begin(),ls.end(),original.begin());
 	
 	firstState = st;
@@ -54,7 +54,7 @@ void states::findPaths() {
 	}
 }
 
-void states::update(int newI, string &ste) {
+void states::update(int newI, string ste) {
 	if (ste == "00") {
 		if (newI == 0) {
 			c0.push_back(0);
