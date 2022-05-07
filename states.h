@@ -18,7 +18,7 @@ class states {
 		vector<int> c1;
 
 	public:
-		states(vector<int> ls, string);
+		states (vector<int>, string);
 		
 		void reset();
 
